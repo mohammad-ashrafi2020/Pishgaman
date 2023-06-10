@@ -1,0 +1,24 @@
+﻿@page
+@using WebApp.Services.Auth
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+    @if (User.Identity.IsAuthenticated)
+    {
+        if (Model.CurrentUser != null)
+        {
+
+
+            <p>@Model.CurrentUser.PhoneNumber - @Model.CurrentUser.Role.ToString()</p>
+        }
+        <a class="btn btn-success" asp-page="Persons/Index">مدیریت پرسنل</a>
+    }
+    else
+    {
+        <a class="btn btn-danger" asp-page="Auth/Login">ورود به سایت</a>
+    }
+</div>

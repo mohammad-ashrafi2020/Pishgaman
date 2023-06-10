@@ -1,0 +1,20 @@
+﻿@page
+@model WebApp.Pages.Auth.LoginModel
+@{
+    ViewData["title"] = "ورود به سایت";
+}
+<div class="auth-form shadow-around">
+    <form method="post">
+        @Html.HiddenFor(f=>f.RedirectTo)
+
+        @Html.EditorFor(m=>m.PhoneNumber)
+        <br />
+        @Html.EditorFor(m=>m.Password)
+
+        <button class="btn btn-success mt-2">
+            <i class="fad fa-sign-in-alt"></i>
+            ورود به سایت
+        </button>
+
+    </form>
+</div>

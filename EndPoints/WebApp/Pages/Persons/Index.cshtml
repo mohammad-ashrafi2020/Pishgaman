@@ -1,0 +1,51 @@
+﻿@page "{handler?}"
+@model WebApp.Pages.Persons.IndexModel
+<form class="card card-body">
+    <h3>فیلتر نتایج</h3>
+    <div class="row mb-2">
+        <div class="col-md-6">
+            <p>نام</p>
+            <input type="text" class="form-control" asp-for="FilterParams.Name" />
+        </div>
+        <div class="col-md-6">
+            <p>کد ملی</p>
+            <input type="text" class="form-control" asp-for="FilterParams.NatinalCode" />
+
+        </div>
+    </div>
+    <submit text="فیلتر"/>
+</form>
+<a class="btn btn-success mb-2 mt-2" asp-page="Add">افزودت</a>
+<table class="table table-bordered table-hover">
+    <thead>
+    <tr>
+        <th>عکس</th>
+        <th>نام</th>
+        <th>نام خانوادگی</th>
+        <th>نام پدر</th>
+        <th>کد ملی</th>
+        <th>شماره موبایل</th>
+        <th>عملیات</th>
+    </tr>
+    </thead>
+    <tbody>
+    @foreach (var item in Model.FilterResult.Data)
+    {
+        <tr>
+            <td>
+                <img style="max-width: 100px" src="https://localhost:5001/img/avatar/@item.Avatar"/>
+            </td>
+            <td>@item.Name</td>
+            <td>@item.Family</td>
+            <td>@item.FatherName</td>
+            <td>@item.NatinalCode</td>
+            <td>@item.PhoneNumber</td>
+            <td>
+                <DeleteItem url="@Url.Page("Index", "Delete", new { id = item.Id })"> حذف</DeleteItem>
+                <a class="btn btn-primary btn-sm" asp-page="Edit" asp-route-id="@item.Id">ویرایش</a>
+            </td>
+        </tr>
+    }
+    </tbody>
+</table>
+<partial name="Shared/_Paginat" model="Model.FilterResult" />

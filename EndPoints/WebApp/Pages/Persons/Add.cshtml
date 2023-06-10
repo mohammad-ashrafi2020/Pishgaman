@@ -1,0 +1,31 @@
+﻿@page
+@model WebApp.Pages.Persons.AddModel
+@{
+    ViewData["Title"] = "ویرایش پرسنش";
+}
+<form class="row" method="post" enctype="multipart/form-data">
+    <div class="col-md-6">
+        @Html.EditorFor(f=>f.Name)
+    </div>
+    <div class="col-md-6">
+        @Html.EditorFor(f=>f.Family)
+    </div>
+    <div class="col-md-6">
+        @Html.EditorFor(f=>f.Email)
+    </div>
+    <div class="col-md-6">
+        @Html.EditorFor(f=>f.PhoneNumber)
+    </div>
+    <div class="col-md-6">
+        @Html.EditorFor(f=>f.FatherName)
+    </div>
+    <div class="col-md-6">
+        @Html.EditorFor(f=>f.NatinalCode)
+    </div>
+    <div class="col-md-12">
+        @Html.EditorFor(f=>f.Avatar)
+    </div>
+    <div class="col-md-12">
+        <submit class="mt-2 btn btn-success float-end" />
+    </div>
+</form>
